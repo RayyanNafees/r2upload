@@ -1,54 +1,26 @@
-# React + TypeScript + Vite
+# R2 uploader Drag & Drop
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the boilerplate code for drag and drop file upload functionality on Cloudflare R2 object storage
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+`client`
 
-## Expanding the ESLint configuration
+- React
+- Sonner Toast
+- TailwindCSS
+- react-dropzone
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+`server`
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- Deno + aws4fetch
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Setup
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. Go to cloudflare and create an R2 bucket (preferrable with `amulet-pdfs` name)
+2. Go to its settings then CORS policy and then set the CORS policy content to that of [r2cors.json](/server/r2cors.json) file in server folder
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## Running
+
+1. Deploy the Deno URL signer code in `server` directory to some Deno Playground](dash.deno.dev/playground) or [Val](https://val.town)
+2. change the link in [upload.ts](/upload.ts) of that of the URL signer u just uploaded
