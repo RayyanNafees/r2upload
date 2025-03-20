@@ -1,0 +1,9 @@
+{
+  "tasks": {
+    "dev": "deno run -N --watch r2sign.ts"
+  },
+  "imports": {
+    "@std/assert": "jsr:@std/assert@1",
+    "aws4fetch": "npm:aws4fetch@^1.0.20"
+  }
+}
